@@ -15,7 +15,7 @@ class Account {
        
         $query = $conn->query($sql);
         while ($row = mysqli_fetch_assoc($query)) {
-            $accounts[] = getAccountFormated($row);
+            $accounts[] = $this->getAccountFormated($row);
         }
 
        

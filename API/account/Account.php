@@ -1,6 +1,6 @@
 <?php
 
-require_once '../DBConfig/DBConfig.php';
+require_once dirname(__FILE__) . '/../DBConfig/DBConfig.php';
 
 class Account {
 
@@ -15,13 +15,16 @@ class Account {
        
         $query = $conn->query($sql);
         while ($row = mysqli_fetch_assoc($query)) {
-            $accounts[] = array("accountID" => $row['account_id'], "accountName" => $row['account_name'], "balance" => intval($row['balance']));
+            $accounts[] = $this->getAccountFormated($row);
         }
 
        
         $data["accounts"] = $accounts;
         $jsonData = json_encode($data);
         return $jsonData;
+    }
+    public function getAccountFormated($user) {
+        return array("accountID" => $user['account_id'], "accountName" => $user['account_name'], "balance" => intval($user['balance']));
     }
 
 }

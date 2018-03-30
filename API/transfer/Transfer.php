@@ -1,6 +1,6 @@
 <?php
 
-require_once '../DBConfig/DBConfig.php';
+require_once dirname(__FILE__).'/../DBConfig/DBConfig.php';
 
 class Transfer {
 
@@ -16,13 +16,9 @@ class Transfer {
         $row = mysqli_fetch_assoc($query);
         $baseMoney= floatval($row['balance']);
         $total = $baseMoney+ floatval($moneyAmount);
-        if($this->checkLimitBOT($total)){
-            return true;
-        }else{
-            return false;
-        }
+        return $this->isOverLimitBOT($total);
     }
-    public function checkLimitBOT($total) {
+    public function isOverLimitBOT($total) {
         return $total > 50000;
     }
 

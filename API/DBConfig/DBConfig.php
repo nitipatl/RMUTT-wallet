@@ -24,8 +24,8 @@ class DBConfig {
         DBConfig::$hostname = "localhost";
         DBConfig::$database = "RTe-wallet";
         DBConfig::$username = "root";
-        //DBConfig::$password = "rt2018";
-        DBConfig::$password = "";
+        DBConfig::$password = "rt2018";
+        //DBConfig::$password = "";
 
         $conn = new mysqli(DBConfig::$hostname, DBConfig::$username, DBConfig::$password, DBConfig::$database);
         $cs = "SET character_set_results=utf8";

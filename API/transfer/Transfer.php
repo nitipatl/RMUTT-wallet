@@ -1,6 +1,6 @@
 <?php
 
-require_once '../DBConfig/DBConfig.php';
+require_once dirname(__FILE__) . '/../DBConfig/DBConfig.php';
 
 class Transfer {
 
@@ -21,6 +21,13 @@ class Transfer {
         } else {
             return false;
         }
+        $baseMoney = floatval($row['balance']);
+        $total = $baseMoney + floatval($moneyAmount);
+        return $this->isOverLimitBOT($total);
+    }
+
+    public function isOverLimitBOT($total) {
+        return $total > 50000;
     }
 
     public function isEnoughForAccountFrom($accountFrom, $moneyAmount) {

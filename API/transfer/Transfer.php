@@ -16,11 +16,14 @@ class Transfer {
         $row = mysqli_fetch_assoc($query);
         $baseMoney= floatval($row['balance']);
         $total = $baseMoney+ floatval($moneyAmount);
-        if($total > 50000){
+        if($this->checkLimitBOT($total)){
             return true;
         }else{
             return false;
         }
+    }
+    public function checkLimitBOT($total) {
+        return $total > 50000;
     }
 
 }

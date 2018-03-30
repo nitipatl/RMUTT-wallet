@@ -1,4 +1,5 @@
 Options +FollowSymLinks
 RewriteEngine on
-RewriteRule (.*) index.php?userID=1
+#RewriteRule ^view/([0-9]+)/$ index.php?userID=$1
+#RewriteRule ^view/([0-9]+)$ /view/$1/ [R]
 
